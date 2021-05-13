@@ -1,0 +1,24 @@
+#import modules to bring csv file over
+import os
+import csv
+
+#Open path to resources for data
+csvpath = os.path.join("resources", "budget_data.csv")
+
+#Define PyBank variables needed
+total_months = 0
+net_profit_loss = 0
+
+#Read the csv file
+with open(csvpath) as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    
+    #Read header row first
+    csvheader = next(csvfile)
+    
+    #For loop to read through each row
+    for row in csvreader
+        
+        total_months = total_months + 1
+
+
