@@ -50,23 +50,16 @@ with open(csvpath, "r") as csvfile:
             greatestDecrease[0] = row[0]
 
 #Generate Output Summary
-output = (
-        f"/nFinancial Analysis/n"
-        f"------------------------/n"
-        f"Total Months: {total_months}/n"
-        f"Total Revenue: ${net_total}/n"
-        f"Average Revenue Change: ${revenue_average}/n"
-        f"Greatest Increase in Revenue: {greatestIncrease[0]} (${greatestIncrease})/n"
-        f"Greatest Decrease in Revenue: {greatestDecrease[0]} (${greatestDecrease})/n"
-        )
+output = (  
+        f"\nFinancial Analysis\n"
+        f"----------------------------\n"
+        f"Total Months: {total_months}\n"
+        f"Total: ${net_total}\n"
+        f"Average  Change: ${revenue_average}\n"
+        f"Greatest Increase in Profits: {greatestIncrease[0]} (${greatestIncrease[1]})\n"
+        f"Greatest Decrease in Profits: {greatestDecrease[0]} (${greatestDecrease[1]})\n")
 
-print("Financial Analysis")
-print(f"Total Months: {total_months}")
-print(f"Total: ${net_total}")
-print(f"Average Change: ${revenue_average}")
-print(f"Greatest Increase in Profits: {greatestIncrease[0]} (${greatestIncrease[1]})")
-print(f"Greatest Decrease in Profits: {greatestDecrease[0]} (${greatestDecrease[1]})")
-
+print(output)
 
 #Export the results to text file
 with open(file_output, "w") as txt_file:

@@ -1,1 +1,8 @@
-/nFinancial Analysis/n------------------------/nTotal Months: 86/nTotal Revenue: $38382578/nAverage Revenue Change: $7803.476744186047/nGreatest Increase in Revenue: Feb-12 ($['Feb-12', 1926159])/nGreatest Decrease in Revenue: Sep-13 ($['Sep-13', -2196167])/n
+
+Financial Analysis
+----------------------------
+Total Months: 86
+Total: $38382578
+Average  Change: $7803.476744186047
+Greatest Increase in Profits: Feb-12 ($1926159)
+Greatest Decrease in Profits: Sep-13 ($-2196167)
