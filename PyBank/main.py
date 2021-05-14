@@ -52,20 +52,21 @@ with open(csvpath, "r") as csvfile:
 #Generate Output Summary
 output = (
         f"/nFinancial Analysis/n"
-
         f"------------------------/n"
-
         f"Total Months: {total_months}/n"
-
         f"Total Revenue: ${net_total}/n"
-
         f"Average Revenue Change: ${revenue_average}/n"
-
-        f"Greatest Increase in Revenue: {greatestIncrease[0]} (${greatestIncrease})"
-
-        f"Greatest Decrease in Revenue: {greatestDecrease[0]} (${greatestDecrease})"
+        f"Greatest Increase in Revenue: {greatestIncrease[0]} (${greatestIncrease})/n"
+        f"Greatest Decrease in Revenue: {greatestDecrease[0]} (${greatestDecrease})/n"
         )
-print(output)
+
+print("Financial Analysis")
+print(f"Total Months: {total_months}")
+print(f"Total: ${net_total}")
+print(f"Average Change: ${revenue_average}")
+print(f"Greatest Increase in Profits: {greatestIncrease[0]} (${greatestIncrease[1]})")
+print(f"Greatest Decrease in Profits: {greatestDecrease[0]} (${greatestDecrease[1]})")
+
 
 #Export the results to text file
 with open(file_output, "w") as txt_file:
