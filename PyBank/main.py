@@ -4,6 +4,7 @@ import csv
 
 #Create path for resources get data
 csvpath = os.path.join(".", "resources", "budget_data.csv")
+file_output = "analysis/budget_analysis.txt"
 
 #Variables/Lists parameters needed
 months = []
@@ -35,9 +36,33 @@ with open(csvpath, "r") as csvfile:
         #Calculate the Average revenue change
         revenue_average = sum(revenue_list) / len(revenue_list)
 
-        
+        #calculate greatest increase in profits(dates included)
+        profit_increase = max(revenue_change)
+        #find month of greatest increase
+        mon = revenue_change.index(profit_increase)
+        month_inc = month[mon + 1]
 
+        #Calculate greatest decrease in profits(dates included)
+        profit_decrease = min(revenue_change)
+        #find month of greatest decrease
+        date = revenue_change.index(profit_decrease)
+        month_dec = month[date +1]
 
+#Generate Output Summary
+output = (
+        f"/nFinancial Analysis/n"
+        f"------------------------/n"
+        f"Total Months: {total_months}/n"
+        f"Total Revenue: ${net_total}/n"
+        f"Average Revenue Change: ${revenue_average}/n"
+        f"Greatest Increase in Revenue: {mon_inc} (${profit_increase})"
+        f"Greatest Decrease in Revenue: {mon_dec} (${profit_decrease})"
+        )
+print(output)
+
+#Export the results to text file
+with open(output_file, "w") as txt_file:
+    txt_file.write(output)
 
 
 
