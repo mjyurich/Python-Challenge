@@ -4,7 +4,7 @@ import csv
 
 #Create path for resources get data
 csvpath = os.path.join(".", "resources", "budget_data.csv")
-file_output = "analysis/budget_analysis.txt"
+file_output = os.path.join(".", "analysis", "budget_analysis.txt")
 
 #Variables/Lists parameters needed
 months = []
@@ -12,8 +12,9 @@ revenue_list = []
 total_months = 0
 net_total = 0
 revenue_last = 0
-
-
+month_change = []
+greatestIncrease = ["", 0]
+greatestDecrease = ["", 999999999999]
 
 #Open and read the data
 with open(csvpath, "r") as csvfile:
@@ -32,36 +33,42 @@ with open(csvpath, "r") as csvfile:
         revenue_change = int(row[1]) - revenue_last
         revenue_last = int(row[1])
         revenue_list = revenue_list + [revenue_change]
+        month_change = month_change +  [row[0]]
+
 
         #Calculate the Average revenue change
         revenue_average = sum(revenue_list) / len(revenue_list)
 
         #calculate greatest increase in profits(dates included)
-        profit_increase = max(revenue_change)
-        #find month of greatest increase
-        mon = revenue_change.index(profit_increase)
-        month_inc = month[mon + 1]
+        if (revenue_change > greatestIncrease[1]):
+            greatestIncrease[1] = revenue_change
+            greatestIncrease[0] = row[0]
 
         #Calculate greatest decrease in profits(dates included)
-        profit_decrease = min(revenue_change)
-        #find month of greatest decrease
-        date = revenue_change.index(profit_decrease)
-        month_dec = month[date +1]
+        if (revenue_change < greatestDecrease[1]):
+            greatestDecrease[1] = revenue_change
+            greatestDecrease[0] = row[0]
 
 #Generate Output Summary
 output = (
         f"/nFinancial Analysis/n"
+
         f"------------------------/n"
+
         f"Total Months: {total_months}/n"
+
         f"Total Revenue: ${net_total}/n"
+
         f"Average Revenue Change: ${revenue_average}/n"
-        f"Greatest Increase in Revenue: {mon_inc} (${profit_increase})"
-        f"Greatest Decrease in Revenue: {mon_dec} (${profit_decrease})"
+
+        f"Greatest Increase in Revenue: {greatestIncrease[0]} (${greatestIncrease})"
+
+        f"Greatest Decrease in Revenue: {greatestDecrease[0]} (${greatestDecrease})"
         )
 print(output)
 
 #Export the results to text file
-with open(output_file, "w") as txt_file:
+with open(file_output, "w") as txt_file:
     txt_file.write(output)
 
 
