@@ -44,11 +44,13 @@ with open(csvpath, "r") as csvfile:
         #Need vote count for each candidate
         votes = candidate_votes.get(candidates)
         vote_percentage = int(votes) / int(total_votes) * 100
-        
+
+        #Find the candidar with the most votes
         if votes > most_votes:
             most_votes = votes
             winning_candidate = candidates
 
+        #Put all the candidate in analysis form with vote percentage and total votes
         voter_number = f"{candidates}: {vote_percentage: .2f}% ({votes})\n"
         print(voter_number)
         names_list.append(voter_number)
@@ -61,10 +63,8 @@ output = (
          f"----------------------------\n"
          f"Total Votes: {total_votes}\n"
          f"--------------------------------\n")
-
 for data in names_list:
     output = output + data
-
 output = output + (
     f"----------------------------\n"
     f"Winner: {winning_candidate}\n")
@@ -73,6 +73,7 @@ print(output)
 
 with open(file_output, "w") as text_file:
     text_file.write(output)
+
 
 
 
